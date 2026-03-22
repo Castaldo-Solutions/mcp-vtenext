@@ -1,0 +1,48 @@
+{
+  "name": "mcp-vtenext",
+  "version": "1.0.0",
+  "description": "MCP server for VTENext CRM — exposes the WebService API as tools for Claude and other MCP clients",
+  "main": "index.js",
+  "bin": {
+    "mcp-vtenext": "./index.js"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:integration": "vitest run --config vitest.integration.config.js"
+  },
+  "keywords": [
+    "mcp",
+    "vtenext",
+    "vtiger",
+    "crm",
+    "model-context-protocol",
+    "claude",
+    "ai"
+  ],
+  "author": "Castaldo Solutions <info@castaldosolutions.it> (https://castaldosolutions.it)",
+  "license": "MIT",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Castaldo-Solutions/mcp-vtenext.git"
+  },
+  "homepage": "https://github.com/Castaldo-Solutions/mcp-vtenext#readme",
+  "bugs": {
+    "url": "https://github.com/Castaldo-Solutions/mcp-vtenext/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "axios": "^1.13.6",
+    "dotenv": "^17.3.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.0",
+    "vitest": "^4.1.0"
+  }
+}
