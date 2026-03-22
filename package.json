@@ -1,5 +1,5 @@
 {
-  "name": "mcp-vtenext",
+  "name": "@castaldosolutions/mcp-vtenext",
   "version": "1.0.0",
   "description": "MCP server for VTENext CRM — exposes the WebService API as tools for Claude and other MCP clients",
   "main": "index.js",
