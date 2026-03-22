@@ -2,6 +2,8 @@
 
 MCP server for VTENext CRM — exposes the WebService API as tools for Claude and other MCP-compatible clients.
 
+[![mcp-vtenext MCP server](https://glama.ai/mcp/servers/Castaldo-Solutions/mcp-vtenext/badges/card.svg)](https://glama.ai/mcp/servers/Castaldo-Solutions/mcp-vtenext)
+
 ## Requirements
 
 - Node.js 18+
