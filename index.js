@@ -7,6 +7,8 @@ import { VTENextClient } from './client.js';
 
 config();
 
+const READ_ONLY = process.env.READ_ONLY === 'true';
+
 const client = new VTENextClient({
   url: process.env.VTENEXT_URL || 'http://localhost:8080',
   username: process.env.VTENEXT_USERNAME || 'admin',
@@ -76,7 +78,7 @@ server.tool(
 
 server.tool(
   'create_opportunita',
-  'Crea una nuova opportunità in VTENext',
+  'Crea una nuova opportunità in VTENext (non disponibile in modalità sola lettura)',
   {
     nome: z.string().describe('Nome dell\'opportunità'),
     stato: z.string().optional().default('Prospecting').describe('Stato (es. Prospecting, Qualification, Closed Won)'),
@@ -85,6 +87,7 @@ server.tool(
     descrizione: z.string().optional().describe('Note o descrizione'),
   },
   async ({ nome, stato, importo, data_chiusura, descrizione }) => {
+    if (READ_ONLY) return { content: [{ type: 'text', text: 'Errore: server in modalità sola lettura, operazioni di scrittura non consentite.' }] };
     const element = {
       potentialname: nome,
       sales_stage: stato,
@@ -101,7 +104,7 @@ server.tool(
 
 server.tool(
   'update_opportunita',
-  'Aggiorna i dati di un\'opportunità esistente',
+  'Aggiorna i dati di un\'opportunità esistente (non disponibile in modalità sola lettura)',
   {
     id: z.string().describe('ID dell\'opportunità (es. 13x42)'),
     stato: z.string().optional().describe('Nuovo stato'),
@@ -109,6 +112,7 @@ server.tool(
     descrizione: z.string().optional().describe('Note aggiornate'),
   },
   async ({ id, stato, importo, descrizione }) => {
+    if (READ_ONLY) return { content: [{ type: 'text', text: 'Errore: server in modalità sola lettura, operazioni di scrittura non consentite.' }] };
     const current = await client.retrieve(id);
     const element = { ...current };
     if (stato) element.sales_stage = stato;
@@ -144,12 +148,13 @@ server.tool(
 
 server.tool(
   'add_nota_opportunita',
-  'Aggiunge una nota/commento a un\'opportunità',
+  'Aggiunge una nota/commento a un\'opportunità (non disponibile in modalità sola lettura)',
   {
     opportunita_id: z.string().describe('ID dell\'opportunità (es. 13x42)'),
     testo: z.string().describe('Testo della nota'),
   },
   async ({ opportunita_id, testo }) => {
+    if (READ_ONLY) return { content: [{ type: 'text', text: 'Errore: server in modalità sola lettura, operazioni di scrittura non consentite.' }] };
     const result = await client.create('ModComments', {
       commentcontent: testo,
       related_to: opportunita_id,

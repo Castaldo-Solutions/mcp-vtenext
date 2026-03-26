@@ -22,9 +22,34 @@ Edit `.env`:
 VTENEXT_URL=http://your-vtenext-instance
 VTENEXT_USERNAME=admin
 VTENEXT_ACCESS_KEY=your_access_key
+READ_ONLY=false
 ```
 
 The access key is in VTENext under **Admin → Users → [user] → Access Key**.
+
+## Read-only mode
+
+Set `READ_ONLY=true` to prevent any write operation on VTENext. When enabled, the tools `create_opportunita`, `update_opportunita` and `add_nota_opportunita` return an error instead of writing data.
+
+This is useful when the server is used by AI bots or automated agents that should only read CRM data. To run a read-only instance alongside a full-access one, pass the variable via the MCP config:
+
+```json
+{
+  "mcpServers": {
+    "vtenext-bot": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["/absolute/path/to/mcp/vtenext/server/index.js"],
+      "env": {
+        "VTENEXT_URL": "http://your-vtenext-instance",
+        "VTENEXT_USERNAME": "admin",
+        "VTENEXT_ACCESS_KEY": "your_access_key",
+        "READ_ONLY": "true"
+      }
+    }
+  }
+}
+```
 
 ## Claude Code integration
 
@@ -51,8 +76,8 @@ Add to `.mcp.json` in your project root:
 | `list_opportunita` | List opportunities with optional filters (status, search, limit) |
 | `get_opportunita` | Get full details of an opportunity by ID |
 | `search_opportunita` | Search opportunities by name |
-| `create_opportunita` | Create a new opportunity |
-| `update_opportunita` | Update status, amount or notes on an existing opportunity |
+| `create_opportunita` | Create a new opportunity *(write — blocked in read-only mode)* |
+| `update_opportunita` | Update status, amount or notes on an existing opportunity *(write — blocked in read-only mode)* |
 
 ### Contatti (Contacts)
 
@@ -64,7 +89,7 @@ Add to `.mcp.json` in your project root:
 
 | Tool | Description |
 |------|-------------|
-| `add_nota_opportunita` | Add a comment/note to an opportunity |
+| `add_nota_opportunita` | Add a comment/note to an opportunity *(write — blocked in read-only mode)* |
 | `list_attivita_opportunita` | List activities linked to an opportunity |
 
 ### Utilità
