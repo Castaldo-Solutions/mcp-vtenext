@@ -1,12 +1,12 @@
 # mcp-vtenext
 
-MCP server for VTENext CRM — exposes the WebService API as tools for Claude and other MCP-compatible clients.
+MCP server for VTENext CRM: exposes the WebService API as tools for Claude and other MCP-compatible clients.
 
 
 ## Requirements
 
 - Node.js 18+
-- A running VTENext instance (self-hosted or Docker — see [../docker](../docker))
+- A running VTENext instance (self-hosted or Docker, see [../docker](../docker))
 
 ## Setup
 
@@ -76,8 +76,8 @@ Add to `.mcp.json` in your project root:
 | `list_opportunita` | List opportunities with optional filters (status, search, limit) |
 | `get_opportunita` | Get full details of an opportunity by ID |
 | `search_opportunita` | Search opportunities by name |
-| `create_opportunita` | Create a new opportunity *(write — blocked in read-only mode)* |
-| `update_opportunita` | Update status, amount or notes on an existing opportunity *(write — blocked in read-only mode)* |
+| `create_opportunita` | Create a new opportunity *(write, blocked in read-only mode)* |
+| `update_opportunita` | Update status, amount or notes on an existing opportunity *(write, blocked in read-only mode)* |
 
 ### Contatti (Contacts)
 
@@ -89,7 +89,7 @@ Add to `.mcp.json` in your project root:
 
 | Tool | Description |
 |------|-------------|
-| `add_nota_opportunita` | Add a comment/note to an opportunity *(write — blocked in read-only mode)* |
+| `add_nota_opportunita` | Add a comment/note to an opportunity *(write, blocked in read-only mode)* |
 | `list_attivita_opportunita` | List activities linked to an opportunity |
 
 ### Utilità
@@ -122,3 +122,10 @@ npm run test:integration
 ## License
 
 MIT
+
+---
+
+Maintained by [**Castaldo Solutions**](https://www.castaldosolutions.it), enterprise-grade technology built for SMEs.
+
+Why we built an MCP server for a CRM instead of an integration:
+[Connecting VTENext to Claude with MCP](https://www.castaldosolutions.it/articles/en/blog/mcp-server-vtenext-crm-claude).
