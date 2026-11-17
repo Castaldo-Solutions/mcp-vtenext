@@ -5,7 +5,7 @@
   "description": "MCP server for VTENext CRM: exposes the WebService API as tools for Claude and other MCP clients",
   "main": "index.js",
   "bin": {
-    "mcp-vtenext": "./index.js"
+    "mcp-vtenext": "index.js"
   },
   "scripts": {
     "start": "node index.js",
@@ -27,7 +27,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Castaldo-Solutions/mcp-vtenext.git"
+    "url": "git+https://github.com/Castaldo-Solutions/mcp-vtenext.git"
   },
   "homepage": "https://github.com/Castaldo-Solutions/mcp-vtenext#readme",
   "bugs": {
