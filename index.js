@@ -5,7 +5,8 @@ import { z } from 'zod';
 import { config } from 'dotenv';
 import { VTENextClient } from './client.js';
 
-config();
+// quiet: dotenv 17 otherwise prints a banner on stdout, which is the MCP stdio channel.
+config({ quiet: true });
 
 const READ_ONLY = process.env.READ_ONLY === 'true';
 
@@ -17,7 +18,7 @@ const client = new VTENextClient({
 
 const server = new McpServer({
   name: 'mcp-vtenext',
-  version: '1.0.0',
+  version: '1.1.0',
 });
 
 // ─── OPPORTUNITÀ (Potentials) ─────────────────────────────────────────────────

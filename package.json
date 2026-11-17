@@ -1,7 +1,8 @@
 {
   "name": "@castaldosolutions/mcp-vtenext",
-  "version": "1.0.0",
-  "description": "MCP server for VTENext CRM — exposes the WebService API as tools for Claude and other MCP clients",
+  "version": "1.1.0",
+  "mcpName": "it.castaldosolutions/mcp-vtenext",
+  "description": "MCP server for VTENext CRM: exposes the WebService API as tools for Claude and other MCP clients",
   "main": "index.js",
   "bin": {
     "mcp-vtenext": "./index.js"
@@ -21,7 +22,7 @@
     "claude",
     "ai"
   ],
-  "author": "Castaldo Solutions <info@castaldosolutions.it> (https://castaldosolutions.it)",
+  "author": "Castaldo Solutions <info@castaldosolutions.it> (https://www.castaldosolutions.it)",
   "license": "MIT",
   "type": "module",
   "repository": {

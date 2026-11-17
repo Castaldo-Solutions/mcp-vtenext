@@ -1,0 +1,54 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "it.castaldosolutions/mcp-vtenext",
+  "title": "VTENext CRM",
+  "description": "VTENext CRM tools for Claude and MCP clients: opportunities, contacts, notes, VTQL queries.",
+  "websiteUrl": "https://www.castaldosolutions.it/articles/en/blog/mcp-server-vtenext-crm-claude",
+  "repository": {
+    "url": "https://github.com/Castaldo-Solutions/mcp-vtenext",
+    "source": "github",
+    "id": "1188858659"
+  },
+  "version": "1.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@castaldosolutions/mcp-vtenext",
+      "version": "1.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "VTENEXT_URL",
+          "description": "Base URL of your VTENext instance",
+          "isRequired": true,
+          "format": "string",
+          "placeholder": "https://crm.example.com"
+        },
+        {
+          "name": "VTENEXT_USERNAME",
+          "description": "VTENext user the server logs in as",
+          "isRequired": true,
+          "format": "string",
+          "placeholder": "admin"
+        },
+        {
+          "name": "VTENEXT_ACCESS_KEY",
+          "description": "Access key of that user, in VTENext under Admin > Users > user > Access Key",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "READ_ONLY",
+          "description": "Set to true to block every write tool",
+          "isRequired": false,
+          "format": "boolean",
+          "default": "false"
+        }
+      ]
+    }
+  ]
+}
